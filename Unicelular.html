@@ -10,16 +10,28 @@
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>Unicelular</strong></big></big></font></td
 ><td align=right valign=bottom
 ><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/carlos/Descargas/tmp/IA-3/Unicelular.py">/home/carlos/Descargas/tmp/IA-3/Unicelular.py</a></font></td></tr></table>
-    <p><tt>Versión&nbsp;utilizada&nbsp;3.7.0<br>
+    <p><tt>Versión&nbsp;de&nbsp;Python&nbsp;utilizada&nbsp;3.7.0&nbsp;(Recomendado&nbsp;utilizar&nbsp;la&nbsp;consola&nbsp;de&nbsp;Linux&nbsp;o&nbsp;cmd&nbsp;en&nbsp;Windows)<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integrantes:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Aco&nbsp;Guerrero&nbsp;Iván&nbsp;Rogelio<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Ricardo&nbsp;Hernández&nbsp;Gómez<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Hernández&nbsp;Arrieta&nbsp;Carlos&nbsp;Alberto<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Hernández&nbsp;García&nbsp;Luis&nbsp;Angel<br>
+Integrantes:<br>
+-&nbsp;Aco&nbsp;Guerrero&nbsp;Iván&nbsp;Rogelio<br>
+-&nbsp;Ricardo&nbsp;Hernández&nbsp;Gómez<br>
+-&nbsp;Hernández&nbsp;Arrieta&nbsp;Carlos&nbsp;Alberto<br>
+-&nbsp;Hernández&nbsp;García&nbsp;Luis&nbsp;Angel<br>
 &nbsp;<br>
-Esta&nbsp;formula&nbsp;se&nbsp;obtuvo&nbsp;de&nbsp;la&nbsp;tabla&nbsp;del&nbsp;automata&nbsp;celular<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tambien&nbsp;se&nbsp;encuentra&nbsp;como&nbsp;la&nbsp;regla&nbsp;126&nbsp;de&nbsp;Wolfram</tt></p>
+Éste&nbsp;es&nbsp;un&nbsp;programa&nbsp;que&nbsp;simula&nbsp;el&nbsp;comportamiento&nbsp;de&nbsp;un&nbsp;autómata&nbsp;celular&nbsp;unidimensional;<br>
+en&nbsp;cada&nbsp;celda&nbsp;hay&nbsp;un&nbsp;organismo&nbsp;vivo&nbsp;"*"&nbsp;ó&nbsp;muerto&nbsp;"&nbsp;"&nbsp;y&nbsp;con&nbsp;las&nbsp;siguientes&nbsp;reglas&nbsp;de&nbsp;evolución:<br>
+-&nbsp;Cada&nbsp;organismo&nbsp;vivo&nbsp;sobrevivirá&nbsp;la&nbsp;siguiente&nbsp;etapa&nbsp;si&nbsp;y&nbsp;solo&nbsp;si&nbsp;no&nbsp;lo&nbsp;rodean&nbsp;por&nbsp;ambos&nbsp;lados<br>
+otros&nbsp;organismos&nbsp;vivos&nbsp;(por&nbsp;inanición,&nbsp;representación&nbsp;de&nbsp;la&nbsp;competencia).<br>
+-&nbsp;En&nbsp;una&nbsp;celda&nbsp;vacía&nbsp;aparece&nbsp;un&nbsp;organismo&nbsp;vivo&nbsp;si&nbsp;al&nbsp;menos&nbsp;un&nbsp;vecino&nbsp;es&nbsp;un&nbsp;organismo&nbsp;vivo<br>
+(división&nbsp;celular).<br>
+&nbsp;<br>
+El&nbsp;programa&nbsp;solicita&nbsp;2&nbsp;datos,&nbsp;el&nbsp;primero&nbsp;es&nbsp;la&nbsp;población&nbsp;inicial&nbsp;que&nbsp;puede&nbsp;ser&nbsp;un&nbsp;sólo&nbsp;organismo&nbsp;<br>
+vivo&nbsp;u&nbsp;otra&nbsp;en&nbsp;la&nbsp;que&nbsp;la&nbsp;población&nbsp;inicial&nbsp;es&nbsp;aleatoria.<br>
+&nbsp;<br>
+Este&nbsp;comportamiento&nbsp;se&nbsp;obtuvo&nbsp;de&nbsp;la&nbsp;tabla&nbsp;del&nbsp;automata&nbsp;celular&nbsp;visto&nbsp;en&nbsp;clase(pag&nbsp;9)<br>
+<a href="http://dicyg.fi-c.unam.mx:8080/lalo/ia/presentaciones/introduccion-a-la-inteligencia-artificial">http://dicyg.fi-c.unam.mx:8080/lalo/ia/presentaciones/introduccion-a-la-inteligencia-artificial</a><br>
+&nbsp;<br>
+
 <table class="tabla">
     <tr>
         <th>Configuracion</th>
@@ -58,31 +70,38 @@ Esta&nbsp;formula&nbsp;se&nbsp;obtuvo&nbsp;de&nbsp;la&nbsp;tabla&nbsp;del&nbsp;a
         <td>0</td>
     </tr>
 </table>
-<link rel="stylesheet" href="doc.css">
+<br>
+Tambien&nbsp;se&nbsp;encuentra&nbsp;como&nbsp;la&nbsp;regla&nbsp;126&nbsp;de&nbsp;Wolfram<br>
+<a href="http://mathworld.wolfram.com/Rule126.html">http://mathworld.wolfram.com/Rule126.html</a></tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#eeaa77">
 <td colspan=3 valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
-
+    
 <tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><dl><dt><a name="-calculo"><strong>calculo</strong></a>(arreglo)</dt><dd><tt>Calcula&nbsp;los&nbsp;elementos&nbsp;de&nbsp;la&nbsp;siguiente&nbsp;linea<br>
-Por&nbsp;ejemplo&nbsp;si&nbsp;iniciamos&nbsp;con&nbsp;un&nbsp;uno&nbsp;en&nbsp;medio&nbsp;del&nbsp;arregglo,&nbsp;se&nbsp;concateanan&nbsp;<br>
+<td width="100%"><dl><dt><a name="-calculo"><strong>calculo</strong></a>(arreglo)</dt><dd><tt>Aquí&nbsp;se&nbsp;simula&nbsp;el&nbsp;estado&nbsp;del&nbsp;organismo&nbsp;(vivo&nbsp;o&nbsp;muerto).<br>
+arreglo&nbsp;es&nbsp;una&nbsp;cadena&nbsp;de&nbsp;tres&nbsp;elementos&nbsp;donde&nbsp;el&nbsp;elemento&nbsp;central&nbsp;es&nbsp;al&nbsp;que&nbsp;se&nbsp;le&nbsp;analizará&nbsp;su&nbsp;estado<br>
+según&nbsp;las&nbsp;condiciones&nbsp;establecidas.<br>
 &nbsp;<br>
 Args:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arreglo:&nbsp;String<br>
 Returns:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Regresa&nbsp;un&nbsp;cero&nbsp;o&nbsp;un&nbsp;uno</tt></dd></dl>
- <dl><dt><a name="-imprimeLinea"><strong>imprimeLinea</strong></a>(arreglo)</dt><dd><tt>Imprime&nbsp;la&nbsp;linea&nbsp;correspondiente&nbsp;de&nbsp;la&nbsp;figura<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Regresa&nbsp;un&nbsp;"1"&nbsp;en&nbsp;caso&nbsp;de&nbsp;estar&nbsp;vivo&nbsp;o&nbsp;un&nbsp;"0"&nbsp;en&nbsp;caso&nbsp;de&nbsp;estar&nbsp;muerto</tt></dd></dl>
+ <dl><dt><a name="-imprimeLinea"><strong>imprimeLinea</strong></a>(arreglo)</dt><dd><tt>Imprime&nbsp;el&nbsp;nivel&nbsp;correspondiente&nbsp;al&nbsp;Triángulo&nbsp;de&nbsp;Sierpinski&nbsp;proporcionado&nbsp;por&nbsp;arreglo<br>
 &nbsp;<br>
 Args:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arreglo:&nbsp;String</tt></dd></dl>
  <dl><dt><a name="-main"><strong>main</strong></a>()</dt><dd><tt>Función&nbsp;principal&nbsp;main<br>
 &nbsp;<br>
 Esta&nbsp;Función&nbsp;tiene&nbsp;dos&nbsp;opciones:<br>
-La&nbsp;Primera&nbsp;es&nbsp;iniciar&nbsp;con&nbsp;un&nbsp;arreglo&nbsp;con&nbsp;un&nbsp;elemento&nbsp;inicial&nbsp;en&nbsp;medio&nbsp;o&nbsp;iniciar&nbsp;con&nbsp;elementos&nbsp;aleatorios<br>
-La&nbsp;segunda&nbsp;es&nbsp;que&nbsp;altura&nbsp;quieres&nbsp;que&nbsp;tenga&nbsp;a&nbsp;figura&nbsp;a&nbsp;imprimir</tt></dd></dl>
- <dl><dt><a name="-sierpinski"><strong>sierpinski</strong></a>(arreglo)</dt><dd><tt>Args:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arreglo:&nbsp;String</tt></dd></dl>
+La&nbsp;Primera&nbsp;es&nbsp;iniciar&nbsp;con&nbsp;un&nbsp;arreglo&nbsp;con&nbsp;un&nbsp;único&nbsp;elemento&nbsp;inicial&nbsp;o&nbsp;con&nbsp;elementos&nbsp;aleatorios<br>
+La&nbsp;segunda&nbsp;es&nbsp;que&nbsp;altura&nbsp;quieres&nbsp;que&nbsp;tenga&nbsp;el&nbsp;Triángulo&nbsp;de&nbsp;Sierpinski&nbsp;a&nbsp;imprimir</tt></dd></dl>
+ <dl><dt><a name="-sierpinski"><strong>sierpinski</strong></a>(arreglo)</dt><dd><tt>Procesa&nbsp;el&nbsp;siguiente&nbsp;nivel&nbsp;del&nbsp;Triángulo&nbsp;de&nbsp;Sierpinski<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arreglo:&nbsp;String&nbsp;(nivel&nbsp;actual&nbsp;del&nbsp;triángulo)<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aux:&nbsp;String&nbsp;(nivel&nbsp;siguiente&nbsp;del&nbsp;triángulo)</tt></dd></dl>
 </td></tr></table>
 </body></html>
